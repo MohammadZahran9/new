@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (context)=> TabProvider())
     ],
-    child: MaterialApp(
+    child: const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
     ),);

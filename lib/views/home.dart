@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
              if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         } else if (snapshot.hasData) {
-          return TabBarfff(category: snapshot.data,);
+          return TabBarfff(category: snapshot.data);
         }
         return const Center(
           child: CircularProgressIndicator(),

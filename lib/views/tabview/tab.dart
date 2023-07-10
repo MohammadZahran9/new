@@ -13,7 +13,7 @@ class TabBarfff extends StatelessWidget {
   final List<Tab> _tabs = <Tab>[];
   List<Tab> getTabs() {
     _tabs.clear();
-    for (int i = 0; i < category.length; i++) {
+    for (int i = 0; i < category[0].tableMenuList.length; i++) {
       _tabs.add(getTab(i));
     }
     return _tabs;
@@ -22,7 +22,7 @@ class TabBarfff extends StatelessWidget {
   Tab getTab(int w) {
     //log(category[w].tableMenuList.length.toString());
     return Tab(
-      text: "${category[w].tableMenuList[w].menuCategory}",
+      text: "${category[0].tableMenuList[w].menuCategory}",
       
     );
   }
@@ -32,17 +32,14 @@ class TabBarfff extends StatelessWidget {
     return Consumer<TabProvider>(
       builder: (context, value, child) {
         return DefaultTabController(
-          length: category.length,
+          length: category[0].tableMenuList.length,
           child: Scaffold(
             appBar: AppBar(
                 backgroundColor: Colors.white,
                 elevation: 0.0,
                 actions: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: badges.Badge(
-                      child: Text("0"),
-                    ),
+                  badges.Badge(
+                    //child: Text("0"),
                   ),
                   Icon(
                     Icons.shopping_cart,
@@ -62,8 +59,8 @@ class TabBarfff extends StatelessWidget {
                     tabs: getTabs()
                             )
                             ),
-            body: TabBarView(
-                children: List.generate(category.length, (ind) => Text("ss"))),
+            // body: TabBarView(
+            //     children: List.generate(category.length, (ind) => Text("ss"))),
           ),
         );
       },
