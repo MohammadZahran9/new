@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:restaurant/controller/addToCart.dart';
+import 'package:restaurant/views/cart.dart';
 import 'package:restaurant/views/home.dart';
 
 import 'controller/tabBar.dart';
@@ -13,9 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
-      ChangeNotifierProvider(create: (context)=> TabProvider())
+      ChangeNotifierProvider(create: (context)=> TabProvider()),
+      ChangeNotifierProvider(create: (context)=> Cart()),
     ],
-    child: const MaterialApp(
+    child: MaterialApp(
+      routes: {
+        "Checkout" :(context) => Checkout(),
+      },
       debugShowCheckedModeBanner: false,
       home: Home(),
     ),);
