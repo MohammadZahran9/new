@@ -170,7 +170,7 @@ class TabBarfff extends StatelessWidget {
                                                               .tableMenuList[
                                                                   ind]
                                                               .categoryDishes[k]);
-                                                          if (k > 0) {
+                                                          if (quantity > 0) {
                                                             quantity--;
                                                           }
                                                         },
