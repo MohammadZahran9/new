@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:restaurant/controller/addToCart.dart';
 import '../../models/rest.dart';
 
-// ignore: must_be_immutable
 class TabBarfff extends StatelessWidget {
   TabBarfff({super.key, required this.category});
   final List<Restaurant> category;
