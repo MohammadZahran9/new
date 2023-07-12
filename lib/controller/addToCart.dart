@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 
 import '../models/rest.dart';
 
-class Cart extends ChangeNotifier{
-  int g = 0 ;
+class Cart extends ChangeNotifier {
   double _count = 0;
-  List<TableMenuList> hh = [];
+  List<CategoryDish> hh = [];
 
-  void add(TableMenuList i,int r) {
+  void add(CategoryDish i) {
     hh.add(i);
-    g++;
-    _count += i.categoryDishes[r].dishPrice;
+    _count += i.dishPrice;
     notifyListeners();
   }
 
-  void remove(TableMenuList i,int r) {
+  void remove(CategoryDish i) {
     hh.remove(i);
-    _count -= i.categoryDishes[r].dishPrice;
+    _count -= i.dishPrice;
+
     notifyListeners();
   }
+
   int get count {
     return hh.length;
   }
@@ -27,7 +27,7 @@ class Cart extends ChangeNotifier{
     return _count;
   }
 
-  List<TableMenuList> get cart {
+  List<CategoryDish> get cart {
     return hh;
   }
 }
