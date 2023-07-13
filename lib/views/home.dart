@@ -9,22 +9,24 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<TabProvider>(
-      builder: (context, value, child) {
-        return FutureBuilder(
-          future: value.getdata(http.Client()),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasError) {
-              return Text(snapshot.error.toString());
-            } else if (snapshot.hasData) {
-              return TabBarfff(category: snapshot.data);
-            }
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          },
-        );
-      },
+    return Scaffold(
+      body: Consumer<TabProvider>(
+        builder: (context, value, child) {
+          return FutureBuilder(
+            future: value.getdata(http.Client()),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              } else if (snapshot.hasData) {
+                return TabBarfff(category: snapshot.data);
+              }
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
