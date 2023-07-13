@@ -1,14 +1,16 @@
-//import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:badges/badges.dart' as badges;
 import 'package:provider/provider.dart';
 import 'package:restaurant/controller/addToCart.dart';
 import '../../models/rest.dart';
+import '../widgets/AppbarActions.dart';
+import '../widgets/PriceAndCal.dart';
+import '../widgets/SubtitleDescription.dart';
+import '../widgets/TitleName.dart';
+import '../widgets/TrailingImage.dart';
 
 class TabBarfff extends StatelessWidget {
   TabBarfff({super.key, required this.category});
   final List<Restaurant> category;
-  final List<Color> colors = [Colors.green, Colors.red];
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -18,21 +20,7 @@ class TabBarfff extends StatelessWidget {
                 backgroundColor: Colors.white,
                 elevation: 0.0,
                 actions: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Consumer<Cart>(builder: (context, v, child) {
-                      return badges.Badge(
-                        badgeContent: Text(v.count.toString()),
-                        child: GestureDetector(
-                            onTap: () =>
-                                Navigator.of(context).pushNamed("Checkout"),
-                            child: Icon(
-                              Icons.shopping_cart,
-                              color: Colors.grey[600],
-                            )),
-                      );
-                    }),
-                  ),
+                  AppbarActions(),
                 ],
                 leading: const Icon(
                   Icons.menu,
@@ -63,86 +51,34 @@ class TabBarfff extends StatelessWidget {
                         child: Card(
                             borderOnForeground: true,
                             child: ListTile(
-                              title: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 20),
-                                    child: badges.Badge(
-                                        position: badges.BadgePosition.center(),
-                                        badgeStyle: badges.BadgeStyle(
-                                            badgeColor:
-                                                colors[k % colors.length]),
-                                        child: const Icon(Icons
-                                            .check_box_outline_blank_sharp)),
-                                  ),
-                                  SizedBox(
-                                    height: 44,
-                                    width: 270,
-                                    child: Text(
-                                        category[0]
-                                            .tableMenuList[ind]
-                                            .categoryDishes[k]
-                                            .dishName!,
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                        )),
-                                  ),
-                                ],
-                              ),
+                              title: TitleName(
+                                  k: k,
+                                  data: category[0]
+                                      .tableMenuList[ind]
+                                      .categoryDishes[k]),
                               subtitle: Column(
                                 children: [
                                   const Padding(padding: EdgeInsets.all(1)),
                                   SizedBox(
                                     width: 250,
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 60),
-                                          child: Text(
-                                            "SAR ${category[0].tableMenuList[ind].categoryDishes[k].dishPrice} ",
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 0),
-                                          child: Text(
-                                              "${category[0].tableMenuList[ind].categoryDishes[k].dishCalories} calories",
-                                              style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold)),
-                                        ),
-                                      ],
-                                    ),
+                                    child: PriceAndCal(
+                                        data: category[0]
+                                            .tableMenuList[ind]
+                                            .categoryDishes[k]),
                                   ),
                                   const Padding(padding: EdgeInsets.all(4)),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 30),
                                     child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Row(
-                                          children: [
-                                            SizedBox(
-                                              height: 50,
-                                              width: 270,
-                                              child: Text(
-                                                category[0]
-                                                    .tableMenuList[ind]
-                                                    .categoryDishes[k]
-                                                    .dishDescription!,
-                                                style: TextStyle(
-                                                    color: Colors.grey[700]),
-                                              ),
-                                            )
-                                          ],
+                                        SubtitleDescription(
+                                          data: category[0]
+                                              .tableMenuList[ind]
+                                              .categoryDishes[k],
                                         ),
-                                        const Padding(
-                                            padding: EdgeInsets.all(3)),
+                                        Padding(padding: EdgeInsets.all(3)),
                                         Row(
                                           children: [
                                             Container(
@@ -209,18 +145,10 @@ class TabBarfff extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              // trailing: CachedNetworkImage(
-                              //   imageUrl: category[0]
-                              //       .tableMenuList[ind]
-                              //       .categoryDishes[k]
-                              //       .dishImage,
-                              //   fit: BoxFit.fill,
-                              //   progressIndicatorBuilder:
-                              //       (context, url, progress) =>
-                              //           const CircularProgressIndicator(),
-                              //   errorWidget: (context, url, error) =>
-                              //       const Icon(Icons.error),
-                              // ),
+                              trailing: TrailingImage(
+                                  data: category[0]
+                                      .tableMenuList[ind]
+                                      .categoryDishes[k]),
                             )));
                   });
             }))));
