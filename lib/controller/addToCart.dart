@@ -14,7 +14,9 @@ class Cart extends ChangeNotifier {
 
   void remove(CategoryDish i) {
     hh.remove(i);
-    _count -= i.dishPrice;
+    if (_count > 0.0) {
+      _count -= i.dishPrice;
+    }
 
     notifyListeners();
   }
