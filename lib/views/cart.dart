@@ -18,7 +18,8 @@ class Checkout extends StatelessWidget {
                   padding: const EdgeInsets.all(12),
                   child: Text(
                     "Total Price: ${e.total}",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 )
               ],
@@ -35,7 +36,7 @@ class Checkout extends StatelessWidget {
                         subtitle: Text("Price : SAR ${e.hh[index].dishPrice}"),
                         trailing: GestureDetector(
                           onTap: () => e.remove(e.cart[index]),
-                          child: Icon(Icons.remove),
+                          child: const Icon(Icons.remove),
                         ),
                       ),
                     );

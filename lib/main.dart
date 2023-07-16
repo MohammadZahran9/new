@@ -6,7 +6,7 @@ import 'package:restaurant/views/home.dart';
 
 import 'controller/futureProvider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         routes: {
-          "Checkout": (context) => Checkout(),
+          "Checkout": (context) => const Checkout(),
         },
         debugShowCheckedModeBanner: false,
-        home: Home(),
+        home: const Home(),
       ),
     );
   }

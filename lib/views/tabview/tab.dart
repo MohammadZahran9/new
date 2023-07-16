@@ -9,7 +9,7 @@ import '../widgets/TitleName.dart';
 import '../widgets/TrailingImage.dart';
 
 class TabBarfff extends StatelessWidget {
-  TabBarfff({super.key, required this.category});
+  const TabBarfff({super.key, required this.category});
   final List<Restaurant> category;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class TabBarfff extends StatelessWidget {
             appBar: AppBar(
                 backgroundColor: Colors.white,
                 elevation: 0.0,
-                actions: [
+                actions: const [
                   AppbarActions(),
                 ],
                 leading: const Icon(
@@ -78,7 +78,8 @@ class TabBarfff extends StatelessWidget {
                                               .tableMenuList[ind]
                                               .categoryDishes[k],
                                         ),
-                                        Padding(padding: EdgeInsets.all(3)),
+                                        const Padding(
+                                            padding: EdgeInsets.all(3)),
                                         Row(
                                           children: [
                                             Container(
@@ -92,8 +93,9 @@ class TabBarfff extends StatelessWidget {
                                               child: Consumer<Cart>(
                                                   builder: (context, x, child) {
                                                 return Padding(
-                                                  padding: EdgeInsets.only(
-                                                      right: 7, left: 9),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 7, left: 9),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -109,14 +111,14 @@ class TabBarfff extends StatelessWidget {
                                                             quantity--;
                                                           }
                                                         },
-                                                        child: Icon(
+                                                        child: const Icon(
                                                           Icons.remove,
                                                           color: Colors.white,
                                                         ),
                                                       ),
                                                       Text(
                                                         quantity.toString(),
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                             color: Colors.white,
                                                             fontSize: 15),
                                                       ),
@@ -128,7 +130,7 @@ class TabBarfff extends StatelessWidget {
                                                               .categoryDishes[k]);
                                                           quantity++;
                                                         },
-                                                        child: Icon(
+                                                        child: const Icon(
                                                           Icons.add,
                                                           color: Colors.white,
                                                         ),
