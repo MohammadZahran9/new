@@ -41,23 +41,21 @@ class Checkout extends StatelessWidget {
               ],
             ),
             backgroundColor: Colors.green,
-            body: SizedBox(
-                height: double.infinity,
-                child: ListView.builder(
-                  itemCount: e.hh.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      child: ListTile(
-                        title: Text("${e.hh[index].dishName}"),
-                        subtitle: Text("Price : SAR ${e.hh[index].dishPrice}"),
-                        trailing: GestureDetector(
-                          onTap: () => e.remove(e.cart[index]),
-                          child: const Icon(Icons.remove),
-                        ),
-                      ),
-                    );
-                  },
-                )));
+            body: ListView.builder(
+              itemCount: e.hh.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: ListTile(
+                    title: Text("${e.hh[index].dishName}"),
+                    subtitle: Text("Price : SAR ${e.hh[index].dishPrice}"),
+                    trailing: GestureDetector(
+                      onTap: () => e.remove(e.cart[index]),
+                      child: const Icon(Icons.remove),
+                    ),
+                  ),
+                );
+              },
+            ));
       },
     );
   }
