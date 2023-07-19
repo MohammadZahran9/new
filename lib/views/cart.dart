@@ -14,6 +14,22 @@ class Checkout extends StatelessWidget {
               backgroundColor: Colors.green,
               elevation: 0.0,
               actions: [
+                PopupMenuButton<bool>(
+                  icon: const Icon(
+                    Icons.sort,
+                    color: Colors.white,
+                  ),
+                  onSelected: (bool ascending) {
+                    Provider.of<Cart>(context, listen: false)
+                        .sortlist(ascending);
+                  },
+                  itemBuilder: (context) => [
+                    const PopupMenuItem<bool>(
+                        value: true, child: Text("sort from low to high")),
+                    const PopupMenuItem<bool>(
+                        value: false, child: Text("sort from high to low")),
+                  ],
+                ),
                 Padding(
                   padding: const EdgeInsets.all(12),
                   child: Text(
